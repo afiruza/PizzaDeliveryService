@@ -24,8 +24,10 @@ namespace PizzaDeliveryService
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            string DB_STRING = "Server=pizzadb.cqur2amljiyn.us-east-2.rds.amazonaws.com;Database=Pizza;User Id=admin;password=pizza1998";
+
             services.AddControllersWithViews();
-            services.AddDbContext<DbContexts.PizzaContext>(o => o.UseSqlServer(Configuration.GetConnectionString("PizzaDB")));
+            services.AddDbContext<DbContexts.PizzaContext>(o => o.UseSqlServer(DB_STRING));
             services.AddTransient<IPizzaRepository, PizzaRepository>();
             services.AddSwaggerGen();
         }
